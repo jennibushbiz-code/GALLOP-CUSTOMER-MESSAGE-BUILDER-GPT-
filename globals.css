@@ -1,0 +1,311 @@
+:root {
+  --navy: #182642;
+  --pink: #ff4f91;
+  --pinkSoft: #ff9bc0;
+  --bg: #eef3f8;
+  --text: #24324b;
+  --muted: #6d7c95;
+  --white: #ffffff;
+  --shadow: 0 2px 5px rgba(27,42,67,.08), 0 16px 50px rgba(27,42,67,.08);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+button, input, textarea { font: inherit; }
+
+.topbar {
+  min-height: 66px;
+  background: var(--navy);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px clamp(18px, 5vw, 120px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brandWrap, .cardHeading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brandMark {
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  border: 1px solid var(--pink);
+  display: grid;
+  place-items: center;
+  color: var(--pink);
+  font-family: Georgia, serif;
+  font-weight: 800;
+  font-size: 22px;
+}
+
+.brandMark.large {
+  width: 50px;
+  height: 50px;
+  border: none;
+  background: var(--navy);
+  font-size: 28px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: .11em;
+  font-weight: 800;
+  color: #ff76aa;
+}
+.eyebrow.pink { color: var(--pink); }
+
+.topTitle {
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.hero {
+  min-height: calc(100vh - 106px);
+  padding: clamp(50px, 10vh, 118px) 18px 80px;
+}
+
+.card {
+  background: white;
+  border: 1px solid rgba(30,52,82,.08);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+.formCard {
+  width: min(610px, 100%);
+  margin: 0 auto;
+  padding: clamp(26px, 4vw, 38px);
+}
+
+h1 {
+  margin: 4px 0 0;
+  color: var(--navy);
+  font-size: clamp(25px, 4vw, 31px);
+  line-height: 1.1;
+}
+
+.intro {
+  margin: 25px 0 26px;
+  padding-top: 22px;
+  border-top: 1px solid #edf0f4;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+label {
+  display: block;
+  margin: 0 0 20px;
+}
+
+label span {
+  display: block;
+  color: var(--navy);
+  font-size: 12px;
+  letter-spacing: .06em;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+label em {
+  color: #8a98ad;
+  font-style: normal;
+  font-weight: 500;
+}
+
+input, textarea {
+  width: 100%;
+  border: 1px solid #cbd7e6;
+  border-radius: 10px;
+  padding: 13px 15px;
+  color: var(--text);
+  background: #fbfcfe;
+  outline: none;
+  transition: .15s ease;
+}
+
+textarea { resize: vertical; min-height: 94px; }
+
+input:focus, textarea:focus {
+  border-color: var(--pink);
+  box-shadow: 0 0 0 3px rgba(255,79,145,.10);
+}
+
+input::placeholder, textarea::placeholder { color: #9aabc0; }
+
+.primaryButton, .secondaryButton, .ghostButton {
+  border: 0;
+  cursor: pointer;
+  border-radius: 10px;
+  font-weight: 800;
+  transition: transform .15s ease, opacity .15s ease, background .15s ease;
+}
+
+.primaryButton {
+  width: 100%;
+  padding: 15px 18px;
+  color: white;
+  background: linear-gradient(90deg, var(--pinkSoft), #ff88b5);
+  box-shadow: 0 7px 20px rgba(255,79,145,.18);
+}
+
+.primaryButton:hover:not(:disabled),
+.secondaryButton:hover,
+.ghostButton:hover { transform: translateY(-1px); }
+
+.primaryButton:disabled { opacity: .65; cursor: wait; }
+
+.secondaryButton {
+  background: white;
+  color: var(--navy);
+  border: 1px solid #cdd8e6;
+  padding: 10px 14px;
+}
+
+.ghostButton {
+  padding: 9px 13px;
+  color: white;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.13);
+}
+
+.ghostButton.dark {
+  color: var(--navy);
+  background: white;
+  border: 1px solid #cdd8e6;
+}
+
+.loadingPanel {
+  margin-top: 20px;
+  border: 1px solid #f0d7e2;
+  background: #fff7fb;
+  border-radius: 12px;
+  display: flex;
+  gap: 13px;
+  padding: 15px;
+  align-items: flex-start;
+}
+
+.loadingPanel p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.spinner {
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  border: 3px solid #ffd2e3;
+  border-top-color: var(--pink);
+  animation: spin .8s linear infinite;
+  flex: 0 0 auto;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.errorBox {
+  margin: 0 0 18px;
+  background: #fff0f2;
+  color: #a5223e;
+  border: 1px solid #ffcbd4;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.resultsShell {
+  width: min(980px, 100%);
+  margin: 0 auto;
+}
+
+.resultsToolbar {
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 18px;
+}
+
+.toolbarButtons { display: flex; gap: 9px; }
+
+.resultCard {
+  padding: clamp(24px, 5vw, 54px);
+  line-height: 1.72;
+}
+
+.resultCard h1 { font-size: 32px; margin-top: 0; }
+.resultCard h2 {
+  font-size: 21px;
+  margin: 38px 0 14px;
+  color: var(--navy);
+  padding-bottom: 8px;
+  border-bottom: 1px solid #edf0f4;
+}
+.resultCard h3 { font-size: 17px; color: var(--navy); margin-top: 28px; }
+.resultCard p, .resultCard li { font-size: 15px; }
+.resultCard ul, .resultCard ol { padding-left: 24px; }
+.resultCard strong { color: var(--navy); }
+.resultCard a { color: #c72f68; text-decoration: underline; text-underline-offset: 2px; }
+.resultCard blockquote {
+  margin: 18px 0;
+  padding: 12px 16px;
+  border-left: 4px solid var(--pink);
+  background: #fff7fb;
+}
+
+.sourceSection {
+  margin-top: 44px;
+  padding-top: 18px;
+  border-top: 2px solid #eef1f5;
+}
+
+.copiedNotice {
+  margin: 0 0 12px auto;
+  width: max-content;
+  background: var(--navy);
+  color: white;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.bottomActions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  justify-content: flex-end;
+}
+
+.compact { width: auto; padding: 11px 16px; }
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #8190a4;
+  font-size: 12px;
+}
+
+@media (max-width: 720px) {
+  .topbar { padding-inline: 14px; }
+  .topbar .eyebrow { display: none; }
+  .hero { padding-top: 36px; }
+  .resultsToolbar { display: block; }
+  .toolbarButtons { margin-top: 16px; }
+  .bottomActions { flex-direction: column; }
+  .compact { width: 100%; }
+}
